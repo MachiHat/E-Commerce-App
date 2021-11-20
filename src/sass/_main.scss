@@ -1,14 +1,25 @@
 * {
     scroll-behavior: smooth;
     box-sizing: border-box;
+    font-family: Montserrat;
 }
 
 html {
     color: #fff;
-    background-color: #333;
-    font-family: montserrat;
+    background-color: #222;
+    font-family: Montserrat;
     margin: 0;
     padding: 0;
     min-height: 98vh;
     min-width: 100%;
+}
+
+body {
+    margin: auto;
+    max-width: 1440px;
+}
+
+.btn {
+    border: none;
+    background: none;
 }

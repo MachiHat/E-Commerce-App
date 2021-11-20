@@ -1,5 +1,10 @@
-import logo from '../img/mmlogo.png'
-import { Link } from './Link';
+
+const Link = (props) => {
+    const {label, route} = props.item;
+    return (
+        <li className="navlist-item"><a href={route} className="navlist-item-link">{label}</a></li>
+    )
+}
 
 export const Topnav = () => {
     const linkArray = [
@@ -9,7 +14,7 @@ export const Topnav = () => {
     ];
     return (
         <nav>
-            <img src={logo} alt="small-logo" className="logo-small" />
+            <h1 className="logo-font">MATIMOVEMENT</h1>
             <ul className="navlist">
                 {linkArray.map((linkItem, index) => <Link key={index} item={linkItem} />)}
             </ul>

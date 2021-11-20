@@ -2,29 +2,40 @@ nav {
     display: flex;
     justify-content: space-between;
     color: #fff;
-    background-color: #000;
     padding: 0 50px;
     min-width: 100%;
-    .logo-small {
-        height: 50px;
-        width: 50px;
-        border-radius: 25px;
-        margin: 10px;
+
+    .logo-font {
+        font-family: "Montserrat Bold";
+        text-align: center;
+        margin: 5px 0;
+        font-size: 50px;
+        font-weight: 700;
+        background-color: #000;
+        padding: 3px 15px;
+        border-radius: 5px;
     }
+
     .navlist {
         display: flex;
         flex-direction: row;
         list-style: none;
+
         .navlist-item {
             @include centerflex;
             list-style: none;
             font-size: 20px;
             font-weight: 600;
+
             .navlist-item-link {
                 color: #fff;
                 text-decoration: none;
                 margin: 0 25px;
-                &:hover {color: $lightBlue; transition: 0.2s ease-in-out;}
+
+                &:hover {
+                    color: $lightBlue;
+                    transition: 0.2s ease-in-out;
+                }
             }
         }
     }

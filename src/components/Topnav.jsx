@@ -11,6 +11,7 @@ export const Topnav = () => {
         {label: "HOME", route: "/"},
         {label: "SHOP", route: "/shop"},
         {label: "CONTACT", route: "/contact"},
+        // {label: {cartWidget}, route: "/cart"}
     ];
     return (
         <nav>

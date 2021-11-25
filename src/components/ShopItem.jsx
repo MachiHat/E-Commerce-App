@@ -8,9 +8,11 @@ export const ShopItem = ({ item, setState, state }) => {
             <img className="shop-item-image" alt="shopItemImg" src={imgSRC} />
             <div className="shop-item-details">
                 <span className="shop-item-price"> ${price} </span>
-                <button onClick={() => setState([...state,item])} className="btn shop-item-btn">ADD TO CART</button>
+                <button className="btn shop-item-btn">MORE INFO</button>
             </div>
         </li>
     )
 }
+
+//  onClick={() => setState([...state,item])}
 

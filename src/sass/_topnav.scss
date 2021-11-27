@@ -26,17 +26,15 @@ nav {
             list-style: none;
             font-size: 20px;
             font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            margin: 0 25px;
 
-            .navlist-item-link {
-                color: #fff;
-                text-decoration: none;
-                margin: 0 25px;
-
-                &:hover {
-                    color: $lightBlue;
-                    transition: 0.2s ease-in-out;
-                }
+            &:hover {
+                color: $lightBlue;
+                transition: 0.2s ease-in-out;
             }
+
         }
     }
 }

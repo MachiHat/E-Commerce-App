@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react'
 
-export const ShopCart = ({ state, setState }) => {
+export const ShopCart = () => {
+  const [state, setState] = useState([]);
   const [render, setRender] = useState(true)
   useEffect(() => {
     if (!render) setRender(true);

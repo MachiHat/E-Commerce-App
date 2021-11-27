@@ -23,3 +23,85 @@ body {
     border: none;
     background: none;
 }
+
+.loading-wrap {
+    @include centerflex;
+    height: 88vh;
+
+    .loading-logo {
+        @include centerflex;
+        font-size: 80px;
+        font-family: "Montserrat Bold";
+        font-weight: bolder;
+        background-color: #000;
+        border-radius: 100px;
+        margin: 10px 0;
+        height: 200px;
+        width: 200px;
+        -webkit-animation: spin 3s linear infinite;
+        -moz-animation: spin 3s linear infinite;
+        animation: spin 3s linear infinite;
+
+        @-moz-keyframes spin {
+            100% {
+                -moz-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
+
+.hor {
+    display: flex;
+    flex-direction: row;
+}
+
+.ver {
+    display: flex;
+    flex-direction: column;
+}
+
+
+// NOT SO SERIOUS STUFF 
+
+
+.wippage {
+    @include centerflex;
+
+    h1 {
+        font-size: 80px;
+        background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: background-image .25s ease-in-out;
+    }
+
+    .cprght {
+        position: absolute;
+        right: 10px;
+        bottom: 20px;
+    }
+}
+
+#foot-copy {
+    font-size: 1rem;
+    color: #888;
+    padding: 0.2rem 0;
+}
+
+#foot-name {
+    font-size: 1rem;
+    padding: 0.2rem 0;
+}

@@ -1,23 +1,19 @@
-
-const Link = (props) => {
-    const {label, route} = props.item;
-    return (
-        <li className="navlist-item"><a href={route} className="navlist-item-link">{label}</a></li>
-    )
-}
+import { BsCart } from "react-icons/bs"
+import React from "react"
+import { Link } from "react-router-dom"
 
 export const Topnav = () => {
     const linkArray = [
         {label: "HOME", route: "/"},
         {label: "SHOP", route: "/shop"},
         {label: "CONTACT", route: "/contact"},
-        // {label: {cartWidget}, route: "/cart"}
+        {label: <React.Fragment><BsCart /></React.Fragment>, route: "/cart"}
     ];
     return (
         <nav>
             <h1 className="logo-font">MATIMOVEMENT</h1>
             <ul className="navlist">
-                {linkArray.map((linkItem, index) => <Link key={index} item={linkItem} />)}
+                {linkArray.map((linkItem, index) => <Link className="navlist-item" to={linkItem.route} key={index}>{linkItem.label}</Link>)}
             </ul>
         </nav>
     );

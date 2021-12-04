@@ -10,7 +10,7 @@ export const ShopItem = ({ item }) => {
         <img className="shop-item-image" alt="shopItemImg" src={imgSRC} />
         <div className="shop-item-details">
           <span className="shop-item-price">${price} </span>
-          <Link to={`/shop/${id}`}><button className="btn shop-item-btn">SEE MORE</button></Link>
+          <Link to={`/shop_detail/${id}`}><button className="btn shop-item-btn">SEE MORE</button></Link>
         </div>
       </li>
   );

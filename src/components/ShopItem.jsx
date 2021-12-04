@@ -15,4 +15,3 @@ export const ShopItem = ({ item }) => {
       </li>
   );
 };
-//  onClick={() => setState([...state,item])}

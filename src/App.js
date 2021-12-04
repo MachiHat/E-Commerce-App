@@ -4,6 +4,8 @@ import { HomePage } from './components/HomePage';
 import { ShopContainer } from './components/ShopContainer';
 import { ProductDetailsContainer } from './components/ProductDetailsContainer';
 import { ShopCart } from './components/ShopCart';
+// CONTEXT
+import CartContextProvider from "./context/CartContext";
 // IMAGES
 import paralletIMG from "./img/parallettesShopImg.jpg";
 import parallelBarIMG from "./img/parallelBarsShopImg.jfif";
@@ -14,7 +16,6 @@ import wristWrapIMG from "./img/wristWrapsShopImg.jpg";
 import weightVestIMG from "./img/weightedVest.png";
 import dumbbellIMG from "./img/adjustableDumbbells.jpg";
 // LIBS
-import CartContextProvider from "./context/CartContext";
 import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 import './App.scss';
 
@@ -105,7 +106,7 @@ function App() {
 
   return (
     <div className="App">
-      <CartContextProvider value={{}}>
+      <CartContextProvider>
         <Router>
           <Topnav />
           <Routes>

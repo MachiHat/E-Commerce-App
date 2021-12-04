@@ -1,4 +1,5 @@
 import { ProductDetails } from "./ProductDetails";
+import { Loader } from "./Loader";
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
@@ -18,10 +19,7 @@ export const ProductDetailsContainer = ({ itemList }) => {
   return (
     <div>
       {product.id !== parseInt(id) ? (
-        <div className="ver loading-wrap">
-          <h1 className="loading-logo">MM</h1>
-          <span>Loading, please wait...</span>
-        </div>
+        <Loader/>
       ) : (
         <div>
           <ProductDetails product={product} />

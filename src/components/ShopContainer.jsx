@@ -1,11 +1,16 @@
 import { ShopList } from "./ShopList";
+import { Loader } from "./Loader";
 import { useParams, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 export const ShopContainer = ({ itemList }) => {
+
   const [products, setProd] = useState([]);
+
   const [loading, setLoading] = useState(true);
+
   const categories = ["Hardware", "Weights", "Misc"];
+
   const { category } = useParams();
 
   useEffect(() => {
@@ -18,15 +23,12 @@ export const ShopContainer = ({ itemList }) => {
       }, 3000);
     });
     getProducts.then((response) => setProd(response)).then(() => setLoading(false));
-  }, [category]);
+  }, [category, itemList]);
 
   return (
     <section>
       {loading ? (
-        <div className="ver loading-wrap">
-          <h1 className="loading-logo">MM</h1>
-          <span>Loading, please wait...</span>
-        </div>
+        <Loader/>
       ) : (
         <div>
           <ul className="filter-list">

@@ -19,9 +19,18 @@ body {
     max-width: 1440px;
 }
 
+a {text-decoration: none;}
+
 .btn {
     border: none;
-    background: none;
+    color: #000;
+    background-color: #CCC;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: $lightBlue;
+        transition: 0.2s ease-in-out;
+    }
 }
 
 .loading-wrap {

@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { useCartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 export const ProductDetails = ({ product }) => {
-  const { imgSRC, title, desc, stock, price } = product;
+  const { id, imgSRC, title, desc, stock, price } = product;
 
-  const [count, setCount] = useState();
+  const [count, setCount] = useState(1);
 
   const { cartList, addToCart } = useCartContext();
 
@@ -27,16 +28,28 @@ export const ProductDetails = ({ product }) => {
           <span className="shop-detail-price">${price}</span>
           <input
             className="shop-detail-input"
-            defaultValue="1"
             min="1"
             max={stock}
             type="number"
             value={count}
-            onInput={e => setCount(e.target.value)}
+            onInput={(e) => setCount(e.target.value)}
           />
-          <button className="btn shop-item-btn" onClick={() => onAdd(count)}>
-            ADD TO CART
-          </button>
+          {cartList.find((i) => i.id === id) ? (
+            <div className="ver">
+              <p>This item is already in the cart!</p>
+              <Link className="btn shop-item-btn" to="/shop">KEEP SHOPPING</Link>
+              <Link className="btn shop-item-btn" to="/cart">GO TO CART</Link>
+            </div>
+          ) : (
+            <div>
+              <button
+                className="btn shop-item-btn"
+                onClick={() => onAdd(count)}
+              >
+                ADD TO CART
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

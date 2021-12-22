@@ -20,7 +20,7 @@ export const ShopContainer = ({ itemList }) => {
         if (category) {
           resolve(itemList.filter((item) => item.category === category))
         } else {resolve(itemList)}
-      }, 3000);
+      });
     });
     getProducts.then((response) => setProd(response)).then(() => setLoading(false));
   }, [category, itemList]);

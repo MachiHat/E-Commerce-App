@@ -1,13 +1,14 @@
-import { BsCart } from "react-icons/bs"
+import { BsCartFill } from "react-icons/bs"
 import React from "react"
 import { Link } from "react-router-dom"
+import CartCounter from "./CartCounter";
 
 export const Topnav = () => {
     const linkArray = [
         {label: "HOME", route: "/"},
         {label: "SHOP", route: "/shop"},
         {label: "CONTACT", route: "/contact"},
-        {label: <React.Fragment><BsCart /></React.Fragment>, route: "/cart"}
+        {label: <React.Fragment><BsCartFill /><CartCounter/></React.Fragment>, route: "/cart"}
     ];
     return (
         <nav>

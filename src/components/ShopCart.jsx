@@ -1,60 +1,34 @@
 import { useCartContext } from '../context/CartContext';
+import { Link } from 'react-router-dom';
 import React from 'react'
 
 export const ShopCart = () => {
 
-  const { cartList, clearCart } = useCartContext()
+  const { cartList, clearCart } = useCartContext();
 
   return (
-    <div>
+    <div style={{marginTop: "8rem"}}>
+      <p>ShopCart</p>
       {cartList.map(o => 
-      <div key={o.id + 100} className="shop-cart-item">
+      <div key={o.id} className="shop-cart-item">
         <img src={o.imgSRC} alt="cartItemImg" className="shop-cart-img cart-grid-item" />
-        <span className="shop-cart-title cart-grid-item">{o.title}</span>
-        <span className="shop-cart-price cart-grid-item">${o.price * o.quantity}</span>
+        <span className="shop-cart-title cart-grid-item">{o.title + " "}X{" " + o.count}</span>
+        <span className="shop-cart-price cart-grid-item">${o.price * o.count}</span>
       </div>)}
-      <button className="btn shop-cart-btn cart-grid-item">CLEAR CART</button>
+      {(cartList.length === 0)
+        ?
+          <div>
+            <h3>NO ITEMS IN CART YET!</h3>
+            <Link className="btn" to="/shop">GO TO SHOP</Link>
+          </div>
+        :
+          <div>
+            <button className="btn" onClick={() => clearCart()}>CLEAR CART</button>
+            <button className="btn">FINISH PURCHASE</button>
+          </div>
+      }
     </div>
   )
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* const [state, setState] = useState([]);
-const [render, setRender] = useState(true)
-useEffect(() => {
-  if (!render) setRender(true);
-}, [render])
-return (
-  <div>
-    {state.map((o, index) => {
-      const handleChange = value => {
-        state[index] = {...o, quantity:value};
-        setState(state);
-        setRender(false)
-      }
-      return (
-      <div key={o.id + 100} className="shop-cart-item">
-        <img src={o.imgSRC} alt="cartItemImg" className="shop-cart-img cart-grid-item" />
-        <span className="shop-cart-title cart-grid-item">{o.title}</span>
-        <span className="shop-cart-price cart-grid-item">${o.price * o.quantity}</span>
-        <input className="shop-cart-input cart-grid-item" type="number" min="1" max="9" value={o.quantity} onChange={e => handleChange(e.target.value)} />
-        <button className="btn shop-cart-btn cart-grid-item">REMOVE</button>
-      </div>
-    )})}
-  </div>
-)
-} */
+export default ShopCart;

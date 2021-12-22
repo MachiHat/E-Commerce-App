@@ -9,17 +9,14 @@ export const ProductDetailsContainer = ({ itemList }) => {
   useEffect(() => {
     //Change for axios and use php or json format for itemList
     const getProduct = new Promise((resolve, reject) => {
-      setTimeout(
-        () => resolve(itemList.find((o) => o.id === parseInt(id))),
-        2000
-      );
+      setTimeout(() => resolve(itemList.find((o) => o.id === parseInt(id))));
     });
     getProduct.then((response) => setProd(response));
   });
   return (
     <div>
-      {product.id !== parseInt(id) ? (
-        <Loader/>
+      {product?.id !== parseInt(id) ? (
+        <Loader />
       ) : (
         <div>
           <ProductDetails product={product} />
@@ -28,4 +25,3 @@ export const ProductDetailsContainer = ({ itemList }) => {
     </div>
   );
 };
-//  onClick={() => setState([...state,item])}

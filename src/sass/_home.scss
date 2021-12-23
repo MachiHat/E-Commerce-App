@@ -1,0 +1,26 @@
+.index-title-wrap {
+    @include centerflex;
+    margin-top: 3rem;
+    flex-direction: column;
+    @media (min-width: 720px) and (max-width: 1440px) {padding: 7.5rem 0;}
+    @media screen and (min-width: 1440px) {padding: 17rem 0;}
+    .headline {
+        color: #fff;
+        font-weight: 900;
+        margin: 0;
+        font-size: 1.5rem;
+        @media (min-width: 720px) and (max-width: 1440px) {font-size: 2.4rem;}
+        @media screen and (min-width: 1440px) {font-size: 3.8rem; font-weight: 900;}
+    }
+    .subtitle {
+        color: #fff;
+        font-weight: 800;
+        margin: 0 auto;
+        font-size: 1rem;
+        @media screen and (min-width: 1440px) {font-size: 1.8rem; font-weight: 900;}
+    }
+    .home-btn{
+        padding: 0.5rem 2rem;
+        margin: 0.8rem 0;
+    }
+}

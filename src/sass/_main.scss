@@ -6,7 +6,10 @@
 
 html {
     color: #fff;
-    background-color: #222;
+    background-image: url("../img/mainbg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     font-family: Montserrat;
     margin: 0;
     padding: 0;
@@ -26,6 +29,7 @@ a {text-decoration: none;}
     color: #000;
     background-color: #CCC;
     border-radius: 5px;
+    padding: .2rem .8rem;
 
     &:hover {
         background-color: $lightBlue;
@@ -80,37 +84,4 @@ a {text-decoration: none;}
 .ver {
     display: flex;
     flex-direction: column;
-}
-
-
-// NOT SO SERIOUS STUFF 
-
-
-.wippage {
-    @include centerflex;
-
-    h1 {
-        font-size: 80px;
-        background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition: background-image .25s ease-in-out;
-    }
-
-    .cprght {
-        position: absolute;
-        right: 10px;
-        bottom: 20px;
-    }
-}
-
-#foot-copy {
-    font-size: 1rem;
-    color: #888;
-    padding: 0.2rem 0;
-}
-
-#foot-name {
-    font-size: 1rem;
-    padding: 0.2rem 0;
 }

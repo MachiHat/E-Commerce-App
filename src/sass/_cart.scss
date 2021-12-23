@@ -28,20 +28,20 @@
         text-align: center;
         font-size: 1.2em;
         margin-right: 25px;
-
     }
 
-    .shop-cart-btn {
-        color: white;
-        background-color: #EB5757;
-        border: none;
-        border-radius: .3em;
-        font-weight: bold;
-        max-height: 120px;
+}
 
-        &:hover {
-            background-color: #CC4C4C;
-            transition: 0.2s ease-in-out;
-        }
+.shop-cart-btn {
+    color: white;
+    background-color: #EB5757;
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+    max-height: 120px;
+
+    &:hover {
+        background-color: #CC4C4C;
+        transition: 0.2s ease-in-out;
     }
 }

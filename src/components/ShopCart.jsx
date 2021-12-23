@@ -6,6 +6,8 @@ export const ShopCart = () => {
 
   const { cartList, clearCart } = useCartContext();
 
+  
+  
   return (
     <div style={{marginTop: "8rem"}}>
       <p>ShopCart</p>
@@ -22,9 +24,10 @@ export const ShopCart = () => {
             <Link className="btn" to="/shop">GO TO SHOP</Link>
           </div>
         :
-          <div>
-            <button className="btn" onClick={() => clearCart()}>CLEAR CART</button>
+          <div className='hor'>
+            <button className="btn shop-cart-btn clear-cart-btn" onClick={() => clearCart()}>CLEAR CART</button>
             <button className="btn">FINISH PURCHASE</button>
+            <span>{"Purchase Total: $" + cartList.reduce((acc,val) => acc + val.price * val.count ,0)}</span>
           </div>
       }
     </div>

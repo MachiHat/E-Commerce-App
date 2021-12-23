@@ -10,7 +10,7 @@ export const ProductDetails = ({ product }) => {
 
   const { cartList, addToCart } = useCartContext();
 
-  function onAdd(count) {
+  function onAdd(count) { // ONADD FUNCTION - ADDS PRODUCTS TO CART. UPDATES TOTAL AND COUNTS ITEMS
     setCount(count);
     addToCart({ ...product, count: count });
   }
@@ -34,17 +34,17 @@ export const ProductDetails = ({ product }) => {
             value={count}
             onInput={(e) => setCount(e.target.value)}
           />
-          {cartList.find((i) => i.id === id) ? (
+          {cartList.find((i) => i.id === id) ? ( // TRUE WHEN ITEM IS ON CART
             <div className="ver">
               <p>This item is already in the cart!</p>
               <Link className="btn shop-item-btn" to="/shop">KEEP SHOPPING</Link>
               <Link className="btn shop-item-btn" to="/cart">GO TO CART</Link>
             </div>
-          ) : (
+          ) : ( // TRUE WHEN ITEM IS NOT ON CART - READY TO ADD
             <div>
               <button
                 className="btn shop-item-btn"
-                onClick={() => onAdd(count)}
+                onClick={() => onAdd(count, price)}
               >
                 ADD TO CART
               </button>

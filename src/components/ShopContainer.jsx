@@ -5,35 +5,46 @@ import React, { useState, useEffect } from "react";
 
 export const ShopContainer = ({ itemList }) => {
 
-  const [products, setProd] = useState([]);
+  const [products, setProd] = useState([]); // ItemList products usestate
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // Loader usestate
 
   const categories = ["Hardware", "Weights", "Misc"];
 
   const { category } = useParams();
 
+  // Itemlist filter useeffect and promise for categories
   useEffect(() => {
     setLoading(true);
     const getProducts = new Promise((resolve, reject) => {
       setTimeout(() => {
         if (category) {
-          resolve(itemList.filter((item) => item.category === category))
-        } else {resolve(itemList)}
+          resolve(itemList.filter((item) => item.category === category));
+        } else {
+          resolve(itemList);
+        }
       });
     });
-    getProducts.then((response) => setProd(response)).then(() => setLoading(false));
+    getProducts
+      .then((response) => setProd(response))
+      .then(() => setLoading(false));
   }, [category, itemList]);
 
   return (
     <section>
       {loading ? (
-        <Loader/>
+        <Loader />
       ) : (
         <div>
           <ul className="filter-list">
-            <li className="filter-item"><Link to={"/shop"}>All</Link></li>
-            {categories.map((cat) => <li key={products.id} className="filter-item"><Link to={`/shop/${cat}`}>{cat}</Link></li>)}
+            <li className="filter-item">
+              <Link to={"/shop"}>All</Link>
+            </li>
+            {categories.map((cat) => (
+              <li key={products.id} className="filter-item">
+                <Link activeClassName="active" to={`/shop/${cat}`}>{cat}</Link>
+              </li>
+            ))}
           </ul>
           <ShopList products={products} />
         </div>

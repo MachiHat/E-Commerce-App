@@ -3,7 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import CartCounter from "./CartCounter";
 
-export const Topnav = () => {
+export const Topnav = () => { // TOPNAV CRAFTED VIA ARRAY MAP METHOD
   const linkArray = [
     { label: "HOME", route: "/" },
     { label: "SHOP", route: "/shop" },

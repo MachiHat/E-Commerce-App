@@ -1,13 +1,16 @@
 import { Form } from "./Form";
 import { useCartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
-import React from "react";
+import { useState } from "react";
 
 export const ShopCart = () => {
-  const { cartList, clearCart } = useCartContext();
+
+  const { cartList, clearCart, deleteCartItem } = useCartContext();
+
+  const [state, setState] = useState(false); //Show or hide Form
 
   return (
-    <div style={{ marginTop: "8rem" }}>
+    <div style={{ marginTop: "3rem" }}>
       <p>ShopCart</p>
       {cartList.map((o) => (
         <div key={o.id} className="shop-cart-item">
@@ -22,6 +25,7 @@ export const ShopCart = () => {
           <span className="shop-cart-price cart-grid-item">
             ${o.price * o.count}
           </span>
+          <button onClick={() => deleteCartItem(o.id)} className="btn shop-cart-x cart-grid-item">X</button>
         </div>
       ))}
       {cartList.length === 0 ? (
@@ -33,19 +37,19 @@ export const ShopCart = () => {
         </div>
       ) : (
         <div>
-          <div className="hor">
+          <div className="hor cart-bottom-line">
             <button
-              className="btn shop-cart-btn clear-cart-btn"
+              className="btn clear-cart-btn"
               onClick={() => clearCart()}
             >
               CLEAR CART
             </button>
+            <button className="btn shop-cart-btn" onClick={() => setState(true)}>PROCEED WITH PURCHASE</button>
             <span>
-              {"Purchase Total: $" +
-                cartList.reduce((acc, val) => acc + val.price * val.count, 0)}
+              Purchase total: <b>${cartList.reduce((acc, val) => acc + val.price * val.count, 0)}</b>
             </span>
           </div>
-          <Form cartList={cartList} totalPrice={cartList.reduce((acc, val) => acc + val.price * val.count, 0)} />
+          { state ? <Form cartList={cartList} totalPrice={cartList.reduce((acc, val) => acc + val.price * val.count, 0)} /> : null }
         </div>
       )}
     </div>

@@ -1,16 +1,14 @@
 * {
     scroll-behavior: smooth;
     box-sizing: border-box;
-    font-family: Montserrat;
+    font-family: "Montserrat";
 }
 
 html {
     color: #fff;
-    background-image: url("../img/mainbg.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: Montserrat;
+    background-image: url("../img/darkpanel.png");
+    background-repeat: repeat;
+    font-family: "Montserrat";
     margin: 0;
     padding: 0;
     min-height: 98vh;
@@ -30,7 +28,6 @@ a {text-decoration: none;}
     background-color: #CCC;
     border-radius: 5px;
     padding: .2rem .8rem;
-    margin: auto;
 
     &:hover {
         background-color: $lightBlue;
@@ -75,6 +72,10 @@ a {text-decoration: none;}
             }
         }
     }
+}
+
+.center {
+    @include centerflex;
 }
 
 .hor {

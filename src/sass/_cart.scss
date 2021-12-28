@@ -1,4 +1,3 @@
-
 .shop-cart-item {
     display: grid;
     grid-template-areas: "img, txt, prc";
@@ -43,5 +42,13 @@
     &:hover {
         background-color: #CC4C4C;
         transition: 0.2s ease-in-out;
+    }
+}
+.cart-warning {
+    @include centerflex;
+    margin-top: 3rem;
+    a {
+        padding: .5rem 1.5rem;
+        font-weight: 800;
     }
 }

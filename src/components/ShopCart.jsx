@@ -25,10 +25,10 @@ export const ShopCart = () => {
         </div>
       ))}
       {cartList.length === 0 ? (
-        <div>
+        <div className="cart-warning ver">
           <h3>NO ITEMS IN CART YET!</h3>
           <Link className="btn" to="/shop">
-            GO TO SHOP
+            MOVE TO SHOP
           </Link>
         </div>
       ) : (
@@ -40,7 +40,6 @@ export const ShopCart = () => {
             >
               CLEAR CART
             </button>
-            <button className="btn">FINISH PURCHASE</button>
             <span>
               {"Purchase Total: $" +
                 cartList.reduce((acc, val) => acc + val.price * val.count, 0)}

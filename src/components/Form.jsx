@@ -33,40 +33,70 @@ export const Form = ({ cartList, totalPrice }) => {
       return newOrder.id;
     };
     addOrder(placedOrder)
-      .then((id) => alert(`YOUR ORDER NUMBER IS: ${id}`))
+      .then((id) =>
+        alert(`YOUR ORDER NUMBER IS: ${id}. ${(<br />)} THANKS FOR BUYING!`)
+      )
       .finally(setformData({ name: "", phone: "", mail: "" }));
   };
 
   return (
-    <div>
-      <form onSubmit={submitForm} onChange={formEvent}>
+    <div className="form-wrap">
+      <form className="form" onSubmit={submitForm} onChange={formEvent}>
+        <h2 className="form-title">FILL THE FORM TO PROCEED</h2>
+        <div className="input-field">
+        <i />
         <input
+          className="shop-form-input"
           type="text"
           placeholder="ENTER YOUR NAME"
           name="name"
           value={formData.name}
+          onChange={formEvent}
         />
+        </div>
 
+        <div className="input-field">
+        <i />
         <input
+          className="shop-form-input"
           type="text"
           placeholder="ENTER YOUR PHONE NUMBER"
           name="phone"
           value={formData.phone}
+          onChange={formEvent}
         />
+        </div>
 
+        <div className="input-field">
+        <i />
         <input
+          className="shop-form-input"
           type="text"
           placeholder="ENTER YOUR E-MAIL"
           name="mail"
           value={formData.mail}
+          onChange={formEvent}
         />
+        </div>
 
-        <input type="text" placeholder="CONFIRM YOUR E-MAIL" name="mail2" />
+        <div className="input-field">
+        <i />
+        <input
+          className="shop-form-input"
+          type="text"
+          placeholder="CONFIRM YOUR E-MAIL"
+          name="mail2"
+          value={formData.mail2}
+        />
+        </div>
 
         {formData.mail === formData.mail2 ? (
-          <button className="finalizarCompra">FINALIZAR COMPRA</button>
+          <div>
+            <p>Send data and finish purchase</p>
+            <button className="btn">SEND</button>
+          </div>
         ) : (
-          <p>Complete Correctamente sus Datos para Finalizar la Compra</p>
+          <p>Please complete the form correctly</p>
         )}
       </form>
     </div>

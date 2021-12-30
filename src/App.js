@@ -17,8 +17,12 @@ import "./App.scss";
 
 function App() {
 
+  // FIRESTORE DATA INITIALIZATON
+
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+
+  // FIRESTORE DATA FETCH W/ FUNCTION
 
   async function getItems(db) {
   const itemCol = collection(db, 'itemList');

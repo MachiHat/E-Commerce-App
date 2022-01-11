@@ -1,38 +1,34 @@
 import { ShopList } from "./ShopList";
 import { Loader } from "./Loader";
 import { useParams, Link } from "react-router-dom";
+import { getAllDocs } from "../firebase/firebase";
 import React, { useState, useEffect } from "react";
 
-export const ShopContainer = ({ itemList }) => {
-
+export const ShopContainer = () => {
   const [products, setProd] = useState([]); // ItemList products usestate
 
-  const [loading, setLoading] = useState(true); // Loader usestate
+  const [loading, setLoading] = useState(false); // Loader usestate
 
   const categories = ["Hardware", "Weights", "Misc"];
 
   const { category } = useParams();
 
-  // Itemlist filter useeffect and promise for categories
   useEffect(() => {
     setLoading(true);
-    const getProducts = new Promise((resolve, reject) => {
-      setTimeout(() => {
+    getAllDocs()
+      .then((response) => {
         if (category) {
-          resolve(itemList.filter((item) => item.category === category));
+          setProd(response.filter((item) => item.category === category));
         } else {
-          resolve(itemList);
+          setProd(response);
         }
-      });
-    });
-    getProducts
-      .then((response) => setProd(response))
-      .then(() => setLoading(false));
-  }, [category, itemList]);
+      })
+      .finally(() => setLoading(false));
+  }, [category]);
 
   return (
     <section>
-      {loading ? (
+      {loading === true ? (
         <Loader />
       ) : (
         <div>
@@ -42,7 +38,9 @@ export const ShopContainer = ({ itemList }) => {
             </li>
             {categories.map((cat) => (
               <li key={products.id} className="filter-item">
-                <Link activeClassName="active" to={`/shop/${cat}`}>{cat}</Link>
+                <Link activeClassName="active" to={`/shop/${cat}`}>
+                  {cat}
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  collection,
-  addDoc,
-  getFirestore,
-  serverTimestamp,
-} from "firebase/firestore";
+import { submitForm } from "../firebase/firebase";
 import React from "react";
 
 export const Form = ({ cartList, totalPrice }) => {
@@ -17,33 +12,21 @@ export const Form = ({ cartList, totalPrice }) => {
   const formEvent = (e) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
   };
-  const submitForm = (e) => { // SUBMITS FORM TO FIREBASE - SETS ID TO BE USED
-    e.preventDefault();
-    let placedOrder = {};
-    placedOrder.date = new serverTimestamp();
-    placedOrder.buyer = formData;
-    placedOrder.items = cartList.map((cartItem) => {
-      const itemName = cartItem.title;
-      const itemId = cartItem.id;
-      const itemPrice = cartItem.price;
-      return { itemName, itemId, itemPrice };
-    });
-    placedOrder.totalPrice = totalPrice;
-    const db = getFirestore();
-    const addOrder = async (placedOrder) => {
-      const newOrder = await addDoc(collection(db, "orders"), {
-        ...placedOrder,
-      });
-      setOrderId(newOrder.id);
-      return newOrder.id;
-    };
-    addOrder(placedOrder)
-      .then(setformData({ name: "", phone: "", mail: "" }))
-      .finally(setFinishedOrder(true));
-  };
+
   return (
     <div className="form-wrap">
-      <form className="form" onSubmit={submitForm} onChange={formEvent}>
+      <form
+        className="form"
+        onSubmit={submitForm({
+          formData,
+          setformData,
+          setOrderId,
+          cartList,
+          totalPrice,
+          setFinishedOrder,
+        })}
+        onChange={formEvent}
+      >
         <h2 className="form-title">FILL THE FORM TO PROCEED</h2>
         <div className="input-field">
           <i />

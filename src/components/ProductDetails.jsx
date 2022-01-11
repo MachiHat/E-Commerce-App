@@ -3,17 +3,12 @@ import { useState } from "react";
 import { useCartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
-export const ProductDetails = ({ product }) => {
+export const ProductDetails = ({ product, onAdd }) => {
   const { id, imgSRC, title, desc, stock, price } = product;
 
   const [count, setCount] = useState(1);
 
-  const { cartList, addToCart } = useCartContext();
-
-  function onAdd(count) { // ONADD FUNCTION - ADDS PRODUCTS TO CART. UPDATES TOTAL AND COUNTS ITEMS
-    setCount(count);
-    addToCart({ ...product, count: count });
-  }
+  const { cartList } = useCartContext();
 
   return (
     <div className="hor shop-detail-wrapper">
@@ -44,7 +39,7 @@ export const ProductDetails = ({ product }) => {
             <div>
               <button
                 className="btn shop-item-btn"
-                onClick={() => onAdd(count, price)}
+                onClick={() => onAdd(count, setCount)}
               >
                 ADD TO CART
               </button>

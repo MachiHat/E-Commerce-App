@@ -2,24 +2,38 @@ import { ProductDetails } from "./ProductDetails";
 import { Loader } from "./Loader";
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { getOneDoc } from "../firebase/firebase";
+import { useCartContext } from "../context/CartContext";
 
-export const ProductDetailsContainer = ({ itemList }) => {
-  const [product, setProd] = useState({});
-  const { id } = useParams();
-  // FETCH PRODUCTS VIA FIND FUNCTION
+export const ProductDetailsContainer = () => {
+  const [product, setProd] = useState({}); // PRODUCT USESTATE HOLDER
+
+  const [Loading, setLoading] = useState();
+
+  const { id } = useParams(); // PRODUCT ID PARAM
+
+  const { addToCart } = useCartContext();
+
+  function onAdd(count, setCount) {
+    // ONADD FUNCTION - ADDS PRODUCTS TO CART. UPDATES TOTAL AND COUNTS ITEMS
+    setCount(count);
+    addToCart({ ...product, count: count });
+  }
+  // FETCH PRODUCTS W/ FIND FUNCTION
   useEffect(() => {
-    const getProduct = new Promise((resolve, reject) => {
-      setTimeout(() => resolve(itemList.find((o) => o.id === parseInt(id))));
-    });
-    getProduct.then((response) => setProd(response));
-  });
+    setLoading(true);
+    getOneDoc(id)
+      .then(response => setProd(response))
+      .finally(() => setLoading(false));
+  }, [id]);
+
   return (
     <div>
-      {product?.id !== parseInt(id) ? (
+      {Loading ? (
         <Loader />
       ) : (
         <div>
-          <ProductDetails product={product} />
+          <ProductDetails product={product} onAdd={onAdd} />
         </div>
       )}
     </div>

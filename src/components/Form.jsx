@@ -17,14 +17,15 @@ export const Form = ({ cartList, totalPrice }) => {
     <div className="form-wrap">
       <form
         className="form"
-        onSubmit={submitForm({
+        onSubmit={e => submitForm( {
           formData,
           setformData,
           setOrderId,
           cartList,
           totalPrice,
           setFinishedOrder,
-        })}
+          e,
+        } )}
         onChange={formEvent}
       >
         <h2 className="form-title">FILL THE FORM TO PROCEED</h2>

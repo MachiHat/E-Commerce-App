@@ -8,22 +8,39 @@ import { useCartContext } from "../context/CartContext";
 export const ProductDetailsContainer = () => {
   const [product, setProd] = useState({}); // PRODUCT USESTATE HOLDER
 
+  const { cartList, addToCart, setCartList } = useCartContext();
+
   const [Loading, setLoading] = useState();
 
   const { id } = useParams(); // PRODUCT ID PARAM
 
-  const { addToCart } = useCartContext();
-
-  function onAdd(count, setCount) {
+  function onAdd(count, setCount, setAddedToCart) {
     // ONADD FUNCTION - ADDS PRODUCTS TO CART. UPDATES TOTAL AND COUNTS ITEMS
     setCount(count);
-    addToCart({ ...product, count: count });
+    const productFoundById = cartList.find((item) => item.id === Number(id));
+    if (productFoundById) {
+      if (parseInt(productFoundById.count) + parseInt(count) > product.stock) {
+		return alert(
+          "You can't add to cart the selected amount of products due to stock shortage"
+        );
+      }
+      setCartList(
+        cartList.map((item) => {
+          return item.id === Number(id)
+            ? { ...item, count: parseInt(item.count) + parseInt(count) }
+            : item;
+        })
+      );
+    } else {
+      addToCart({ ...product, count: count });
+    }
+    setAddedToCart(true);
   }
-  // FETCH PRODUCTS W/ FIND FUNCTION
+  // FETCH PRODUCTS W/ FIND FUNCTION & SETS LOADING
   useEffect(() => {
     setLoading(true);
     getOneDoc(id)
-      .then(response => setProd(response))
+      .then((response) => setProd(response))
       .finally(() => setLoading(false));
   }, [id]);
 

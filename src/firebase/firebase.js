@@ -43,15 +43,15 @@ export const getOneDoc = async (id) => {
   return docData;
 };
 
-export const submitForm = async ({
-  e,
+export const submitForm = async ( {
   formData,
   setformData,
   setOrderId,
   cartList,
   totalPrice,
   setFinishedOrder,
-}) => {
+  e
+} ) => {
   // SUBMITS FORM TO FIREBASE - SETS ID TO BE USED
   e.preventDefault();
   let placedOrder = {};

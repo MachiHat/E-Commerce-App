@@ -1,14 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { useCartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
 export const ProductDetails = ({ product, onAdd }) => {
-  const { id, imgSRC, title, desc, stock, price } = product;
+  const { imgSRC, title, desc, stock, price } = product;
 
   const [count, setCount] = useState(1);
 
-  const { cartList } = useCartContext();
+  const [addedToCart, setAddedToCart] = useState(false);
 
   return (
     <div className="hor shop-detail-wrapper">
@@ -29,17 +28,22 @@ export const ProductDetails = ({ product, onAdd }) => {
             value={count}
             onInput={(e) => setCount(e.target.value)}
           />
-          {cartList.find((i) => i.id === id) ? ( // TRUE WHEN ITEM IS ON CART
+          {addedToCart ? ( // TRUE WHEN ITEM IS ON CART
             <div className="ver">
               <p>This item is already in the cart!</p>
-              <Link className="btn shop-item-btn" to="/shop">KEEP SHOPPING</Link>
-              <Link className="btn shop-item-btn" to="/cart">GO TO CART</Link>
+              <Link className="btn shop-item-btn" to="/shop">
+                KEEP SHOPPING
+              </Link>
+              <Link className="btn shop-item-btn" to="/cart">
+                GO TO CART
+              </Link>
             </div>
-          ) : ( // TRUE WHEN ITEM IS NOT ON CART - READY TO ADD
+          ) : (
+            // TRUE WHEN ITEM IS NOT ON CART - READY TO ADD
             <div>
               <button
                 className="btn shop-item-btn"
-                onClick={() => onAdd(count, setCount)}
+                onClick={() => onAdd(count, setCount, setAddedToCart)}
               >
                 ADD TO CART
               </button>

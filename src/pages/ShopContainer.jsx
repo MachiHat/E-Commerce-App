@@ -1,5 +1,5 @@
-import { ShopList } from "./ShopList";
-import { Loader } from "./Loader";
+import { ShopList } from "../components/ShopList";
+import { Loader } from "../components/Loader";
 import { useParams, Link } from "react-router-dom";
 import { getAllDocs } from "../firebase/firebase";
 import React, { useState, useEffect } from "react";

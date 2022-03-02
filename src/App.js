@@ -1,7 +1,7 @@
 // COMPONENTS
 import { Topnav } from "./components/Topnav";
-import { HomePage } from "./components/HomePage";
-import { ShopContainer } from "./components/ShopContainer";
+import { HomePage } from "./pages/HomePage";
+import { ShopContainer } from "./pages/ShopContainer";
 import { ProductDetailsContainer } from "./components/ProductDetailsContainer";
 import { ShopCart } from "./components/ShopCart";
 // CONTEXT
@@ -12,6 +12,8 @@ import "./App.scss";
 
 function App() {
   
+  
+
   return (
     <div className="App">
         <CartContextProvider>

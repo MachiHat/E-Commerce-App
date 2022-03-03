@@ -7,7 +7,7 @@ export const Topnav = () => { // TOPNAV CRAFTED VIA ARRAY MAP METHOD
   const linkArray = [
     { label: "HOME", route: "/" },
     { label: "SHOP", route: "/shop" },
-    { label: "CONTACT", route: "/contact" },
+    { label: "SERVER", route: "/server" },
     {
       label: (
         <React.Fragment>

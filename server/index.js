@@ -1,7 +1,6 @@
 // IMPORTS
 
-import getAllDocs from '../src/firebase/firebase';
-
+const getAllDocs = require('../src/firebase/firebase'); // EL REQUIRE NO ME TOMA EL EXPORT QUE NECESITO
 
 // SERVER SETUP
 
@@ -9,13 +8,12 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-
 //ROUTES
 const path = require("path");
 
-app.get("/products", (req, res) => {
-  res.send(getAllDocs())
-})
+app.get("/server", (req, res) => {
+  res.json({message: "Welcome to the server"});
+});
 
 // MIDDLEWARE
 app.use(express.static(path.join(__dirname, "..", "public")));

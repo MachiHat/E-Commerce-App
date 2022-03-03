@@ -4,6 +4,8 @@ import { HomePage } from "./pages/HomePage";
 import { ShopContainer } from "./pages/ShopContainer";
 import { ProductDetailsContainer } from "./components/ProductDetailsContainer";
 import { ShopCart } from "./components/ShopCart";
+// SERVER_R
+import { ServerR } from "./server-r/index";
 // CONTEXT
 import CartContextProvider from "./context/CartContext";
 // LIBS
@@ -35,6 +37,7 @@ function App() {
                 element={<ProductDetailsContainer />}
               />
               <Route path="/cart" element={<ShopCart />} />
+              <Route path="/server" element={<ServerR />} />
             </Routes>
           </Router>
         </CartContextProvider>

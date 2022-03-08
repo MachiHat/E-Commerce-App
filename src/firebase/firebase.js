@@ -76,3 +76,6 @@ export const submitForm = async ( {
     .then(setformData({ name: "", phone: "", mail: "" }))
     .finally(setFinishedOrder(true));
 };
+
+
+exports.getAlldocs = getAllDocs; // USAR EXPORT DE COMMONJS????
